@@ -88,6 +88,7 @@ public class AudioRecorderView extends RelativeLayout {
                 FileManager fileManager = new FileManager(getContext());
                 fileName = fileManager.createFileName(EXTENSION_FILE);
                 filePath = fileManager.getFileName(fileName);
+                    Log.e("fileName", filePath);
 
                 mRecorder.setOutputFile(filePath);
                 mRecorder.setAudioEncoder(AUDIO_ENCODER);
@@ -105,6 +106,7 @@ public class AudioRecorderView extends RelativeLayout {
 
                 try {
                     mRecorder.prepare();
+                    Log.e(AudioRecorderPlugin.LOG_TAG, "Recording started");
 
                     mRecorder.start();
                     isRecording = true;
@@ -133,6 +135,7 @@ public class AudioRecorderView extends RelativeLayout {
                         FileInputStream fis = new FileInputStream(filePath);
                         mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
                         mPlayer.setDataSource(fis.getFD());
+                                                Log.e("AudioRecord", "Starting the recording");
                         mPlayer.prepare();
                         mPlayer.start();
 
@@ -350,6 +353,7 @@ public class AudioRecorderView extends RelativeLayout {
 
         if (mRecorder != null) {
             mRecorder.stop();
+                                    Log.e("AudioRecord", "stop Recoridng");
             mRecorder.release();
             mRecorder = null;
 
