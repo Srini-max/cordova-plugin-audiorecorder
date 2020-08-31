@@ -105,7 +105,8 @@ public class AudioRecorderView extends RelativeLayout {
 
                 try {
                     mRecorder.prepare();
-
+                    Log.e("filePath:-",filePath);
+                                        Log.e("fileName:-",Recording started);
                     mRecorder.start();
                     isRecording = true;
                     handler.post(UpdateRecordTime);
@@ -140,7 +141,7 @@ public class AudioRecorderView extends RelativeLayout {
                         mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mp) {
-                                Log.i(AudioRecorderPlugin.LOG_TAG, "OnCompletion Player");
+                                Log.i("OnCompletion Player", "OnCompletion Player");
 
                                 stopMediaPlayer((ImageButton) v);
                             }
@@ -352,7 +353,7 @@ public class AudioRecorderView extends RelativeLayout {
             mRecorder.stop();
             mRecorder.release();
             mRecorder = null;
-
+                Log.i("Stop Recording", "Stop Recording");
             isRecording = false;
             recordTime = 1;
             minutes = 0;
